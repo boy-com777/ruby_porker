@@ -55,11 +55,12 @@ class Porker
           ・2と3を交換する場合 : 「2」空白スペース「3」を選択。
         TEXT
         @trade = gets.chomp.split.map(&:to_s)
-        @player.second_draw_one(@deck) if @trade.include?('1')
-        @player.second_draw_two(@deck) if @trade.include?('2')
-        @player.second_draw_three(@deck) if @trade.include?('3')
-        @player.second_draw_four(@deck) if @trade.include?('4')
-        @player.second_draw_five(@deck) if @trade.include?('5')
+        # @player.second_draw_one(@deck) if @trade.include?('1')
+        # @player.second_draw_two(@deck) if @trade.include?('2')
+        # @player.second_draw_three(@deck) if @trade.include?('3')
+        # @player.second_draw_four(@deck) if @trade.include?('4')
+        # @player.second_draw_five(@deck) if @trade.include?('5')
+        @player.second_draw(@deck)
         @player.hands_show
         @player_hand_type = player_hand_type
         @player_change_count += 1
