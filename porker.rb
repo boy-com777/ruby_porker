@@ -21,8 +21,10 @@ class Porker
     build_player
     # build_opponentplayerメソッド呼び出し
     build_opponentplayer
-    # build_deckメソッド���び出し
+    # 山札から手札を引く
     @player.player_first_draw(@deck)
+    # 親手札柄を表示する
+    @player.hands_show
     # 親手札の役を表示
     @player_hand_type = player_hand_type
     # opponentplayerクラスのopponent_player_drawにdeckを引数で渡して呼び出し
@@ -58,7 +60,7 @@ class Porker
         @player.second_draw_three(@deck) if @trade.include?('3')
         @player.second_draw_four(@deck) if @trade.include?('4')
         @player.second_draw_five(@deck) if @trade.include?('5')
-        @player.hands_show_player
+        @player.hands_show
         @player_hand_type = player_hand_type
         @player_change_count += 1
 

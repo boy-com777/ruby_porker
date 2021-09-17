@@ -19,7 +19,9 @@ class Player
     @hands.each do |hand|
       @show_hands << hand
     end
+  end
 
+  def hands_show
     puts '=*=*=*=*=*=*= 親 手札 =*=*=*=*=*=*=*='
     @hands.each.with_index(1) do |hand, i|
       puts "#{i}. #{hand[0]}の#{hand[1]}"
@@ -86,13 +88,13 @@ class Player
     end
   end
 
-  def hands_show_player
-    puts <<~TEXT
-      1. #{@hands[0][0]}の#{@hands[0][1]}
-      2. #{@hands[1][0]}の#{@hands[1][1]}
-      3. #{@hands[2][0]}の#{@hands[2][1]}
-      4. #{@hands[3][0]}の#{@hands[3][1]}
-      5. #{@hands[4][0]}の#{@hands[4][1]}
-    TEXT
-  end
+  # def hands_show_player
+  #   puts <<~TEXT
+  #     1. #{@hands[0][0]}の#{@hands[0][1]}
+  #     2. #{@hands[1][0]}の#{@hands[1][1]}
+  #     3. #{@hands[2][0]}の#{@hands[2][1]}
+  #     4. #{@hands[3][0]}の#{@hands[3][1]}
+  #     5. #{@hands[4][0]}の#{@hands[4][1]}
+  #   TEXT
+  # end
 end
