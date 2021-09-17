@@ -1,13 +1,16 @@
 class Player
   attr_accessor :hands, :sum_hands, :show_hands
 
+  # 手札5枚引くのを定数で定義
+  NUMBER_OF_HAND = 5
+
   def initialize
     @hands = []
   end
 
   # 手札を山札から引く
   def player_first_draw(deck)
-    5.times do
+    NUMBER_OF_HAND.times do
       card = deck.draw
       @hands << card
     end
