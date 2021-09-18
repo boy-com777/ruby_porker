@@ -21,14 +21,49 @@ class Player
     end
   end
 
-  def hands_show
+  def hands_list
     puts '=*=*=*=*=*=*= 親 手札 =*=*=*=*=*=*=*='
     @hands.each.with_index(1) do |hand, i|
       puts "#{i}. #{hand[0]}の#{hand[1]}"
     end
   end
 
-  def second_draw(deck); end
+  def second_draw(deck)
+    if @trade == 1
+      @hands[0].delete(@hands[0][0])
+      @hands[0].delete(@hands[0][0])
+      @hands[0] << deck.draw
+      @hands[0].flatten!
+    end
+    if @trade == 2
+      @hands[1].delete(@hands[1][0])
+      @hands[1].delete(@hands[1][0])
+      @hands[1] << deck.draw
+      @hands[1].flatten!
+    end
+    if @trade == 3
+      @hands[2].delete(@hands[2][0])
+      @hands[2].delete(@hands[2][0])
+      @hands[2] << deck.draw
+      @hands[2].flatten!
+    end
+    if @trade == 4
+      @hands[3].delete(@hands[3][0])
+      @hands[3].delete(@hands[3][0])
+      @hands[3] << deck.draw
+      @hands[3].flatten!
+    end
+    if @trade == 5
+      @hands[4].delete(@hands[4][0])
+      @hands[4].delete(@hands[4][0])
+      @hands[4] << deck.draw
+      @hands[4].flatten!
+    end
+    @show_hands = []
+    @hands.each do |hand|
+      @show_hands << hand
+    end
+  end
 
   # def second_draw_one(deck)
   #   @hands[0].delete(@hands[0][0])

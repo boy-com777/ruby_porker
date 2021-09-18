@@ -24,12 +24,12 @@ class Porker
     # 山札から手札を引く
     @player.player_first_draw(@deck)
     # 親手札柄を表示する
-    @player.hands_show
+    @player.hands_list
     # 親手札の役を表示
     @player_hand_type = player_hand_type
     # opponentplayerクラスのopponent_player_drawにdeckを引数で渡して呼び出し
     @opponentplayer.opponentplayer_first_draw(@deck)
-    # 小手札の役を表示
+    # 子手札の役を表示
     @opponentplayer_hand_type = opponentplayer_hand_type
 
     # 交換回��カウントの変数を定義、初期化
@@ -54,14 +54,26 @@ class Porker
           ・1を交換する場合 : 「1」を選択。
           ・2と3を交換する場合 : 「2」空白スペース「3」を選択。
         TEXT
-        @trade = gets.chomp.split.map(&:to_s)
-        # @player.second_draw_one(@deck) if @trade.include?('1')
-        # @player.second_draw_two(@deck) if @trade.include?('2')
-        # @player.second_draw_three(@deck) if @trade.include?('3')
-        # @player.second_draw_four(@deck) if @trade.include?('4')
-        # @player.second_draw_five(@deck) if @trade.include?('5')
+        while true
+          @trade = gets.chomp.split(&:to_s)
+          @change_number = Regexp.new(/^\d$|\d\s/)
+          if @change_number =~ @trade
+            @player.second_draw(@deck)
+            break
+          # @player.second_draw_one(@deck) if @trade.include?('1')
+          # @player.second_draw_two(@deck) if @trade.include?('2')
+          # @player.second_draw_three(@deck) if @trade.include?('3')
+          # @player.second_draw_four(@deck) if @trade.include?('4')
+          # @player.second_draw_five(@deck) if @trade.include?('5')
+          else
+            puts <<~TEXT
+              交換する手札を選択し直してください。
+              複数枚選択する場合は選択する番号の間に半角スペースが必要です。
+            TEXT
+          end
+        end
         @player.second_draw(@deck)
-        @player.hands_show
+        @player.hands_list
         @player_hand_type = player_hand_type
         @player_change_count += 1
 
