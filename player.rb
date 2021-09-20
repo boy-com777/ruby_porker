@@ -29,13 +29,13 @@ class Player
   end
 
   def second_draw_player(deck)
-    @player.hands[0] = deck.draw
-    @player.hands[1] = deck.draw
-    @player.hands[2] = deck.draw
-    @player.hands[3] = deck.draw
-    @player.hands[4] = deck.draw
-    @player.show_hands = []
-    @player.sho_hands << @player.hands
+    @hands[0] = deck.draw if @change_number == 1
+    @hands[1] = deck.draw if @change_number == 2
+    @hands[2] = deck.draw if @change_number == 3
+    @hands[3] = deck.draw if @change_number == 4
+    @hands[4] = deck.draw if @change_number == 5
+    @show_hands = []
+    @show_hands << @hands
   end
 end
 
