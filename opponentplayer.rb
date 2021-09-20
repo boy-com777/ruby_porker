@@ -1,9 +1,12 @@
-class OpponentPlayer < Player
-  attr_accessor :hands, :sum_hands, :show_hands
+class Opponent < Player
+  attr_accessor :show_hands
+
+  # 手札5枚引くのを定数で定義
+  NUMBER_OF_HAND = 5
 
   # 手札を山札から引く
-  def opponentplayer_first_draw(deck)
-    5.times do
+  def first_draw_opponent(deck)
+    NUMBER_OF_HAND.times do
       card = deck.draw
       @hands << card
     end
@@ -14,8 +17,8 @@ class OpponentPlayer < Player
     end
   end
 
-  def hands_list
-    puts '=*=*=*=*=*=*= 相手プレイヤー 手札 =*=*=*=*=*=*=*='
+  def hands_list_opponent
+    puts '=*=*=*=*= 対戦相手 手札 =*=*=*=*=*=*='
     @hands.each.with_index(1) do |hand, i|
       puts "#{i}. #{hand[0]}の#{hand[1]}"
     end
