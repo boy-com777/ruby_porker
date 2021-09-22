@@ -1,4 +1,6 @@
 class Opponent < Player
+  include Message
+
   attr_accessor :show_hands
 
   # 手札5枚引くのを定数で定義
@@ -25,13 +27,20 @@ class Opponent < Player
   end
 
   def second_draw_opponent(deck)
-    @hands[0] = deck.draw if @change_number == 1
-    @hands[1] = deck.draw if @change_number == 2
-    @hands[2] = deck.draw if @change_number == 3
-    @hands[3] = deck.draw if @change_number == 4
-    @hands[4] = deck.draw if @change_number == 5
-    @show_hands = []
-    @show_hands << @hands
+    information2
+    @change_number = gets.chomp.split(&:to_s)
+    @change = Regexp.new(/^\d$|\d\s/)
+    if @change =~ @change_number
+      @hands[0] = deck.draw if @change_number.include?('1')
+      @hands[1] = deck.draw if @change_number.include?('2')
+      @hands[2] = deck.draw if @change_number.include?('3')
+      @hands[3] = deck.draw if @change_number.include?('4')
+      @hands[4] = deck.draw if @change_number.include?('5')
+      @show_hands = []
+      @show_hands << @hands
+    else
+      information3
+    end
   end
 end
 

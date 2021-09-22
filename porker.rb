@@ -49,27 +49,14 @@ class Porker
       action_player = gets.chomp.to_i
       if action_player == 1
         while true
-          information2
-          @change_number = gets.chomp.split(&:to_s)
-          @change = Regexp.new(/^\d$|\d\s/)
-          if @change =~ @change_number
-            # @player.second_draw_player(@deck) if @change_number.include?('1')
-            # @player.second_draw_player(@deck) if @change_number.include?('2')
-            # @player.second_draw_player(@deck) if @change_number.include?('3')
-            # @player.second_draw_player(@deck) if @change_number.include?('4')
-            # @player.second_draw_player(@deck) if @change_number.include?('5')
-            @player.second_draw_player(@deck)
-            @player.hands_list_player
-            @player_hand_type = hand_type_player
-            @change_count_player += 1
-            player_change_count_check
-            if @player_change_count_flag == 2
-              information5
-              break
-            end
+          @player.second_draw_player(@deck)
+          @player.hands_list_player
+          @player_hand_type = hand_type_player
+          @change_count_player += 1
+          player_change_count_check
+          if @player_change_count_flag == 2
+            information5
             break
-          else
-            information3
           end
         end
 
@@ -79,26 +66,17 @@ class Porker
           information4
           action_opponent = gets.chomp.to_i
           if action_opponent == 1
-            information2
             while true
-              @change_number = gets.chomp.split(&:to_s)
-              @change = Regexp.new(/^\d$|\d\s/)
-              if @change =~ @change_number
-                @opponent.second_draw_opponent(@deck)
-                @opponent.hands_list_opponent
-                @opponent_hand_type = hand_type_opponent
-                @change_count_opponent += 1
-                opponent_change_count_check
-                if @opponent_change_count_flag == 2
-                  information5
-                  break
-                end
+              @opponent.second_draw_opponent(@deck)
+              @opponent.hands_list_opponent
+              @opponent_hand_type = hand_type_opponent
+              @change_count_opponent += 1
+              opponent_change_count_check
+              if @opponent_change_count_flag == 2
+                information5
                 break
-              else
-                information3
               end
             end
-            # break
           elsif action_opponent == 2
             break
           end
