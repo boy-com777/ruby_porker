@@ -39,7 +39,7 @@ class Porker
     # 対戦相手の役を表示
     @opponent_hand_type = hand_type_opponent
 
-    # 交換回数��ウントの変数を定義、初期化
+    # 交換回数カウントの変数を定義、初期化
     @change_count_player = 0
     @change_count_opponent = 0
 
