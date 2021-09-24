@@ -48,6 +48,7 @@ class Porker
 
       action_player = gets.chomp.to_i
       if action_player == 1
+        # 手札交換処理をもう少し考える必要あり
         while true
           @player.second_draw_player(@deck)
           @player.hands_list_player
