@@ -6,8 +6,10 @@ require './message'
 class Porker
   include Message
 
-  # 交換限度回数を2回と定義
+  # 1回目の交換回数と交換限度回数を2回と定義
+  FIRST_PLAYER_ROLE = 1
   PLAYER_ROLE = 2
+  FIRST_OPPONENT_ROLE = 1
   OPPONENT_ROLE = 2
 
   def start
@@ -55,6 +57,8 @@ class Porker
           @player_hand_type = hand_type_player
           @change_count_player += 1
           player_change_count_check
+          break if @player_change_count_flag == 1
+
           if @player_change_count_flag == 2
             information5
             break
@@ -73,6 +77,8 @@ class Porker
               @opponent_hand_type = hand_type_opponent
               @change_count_opponent += 1
               opponent_change_count_check
+              break if @opponent_change_count_flag == 1
+
               if @opponent_change_count_flag == 2
                 information5
                 break
@@ -91,10 +97,12 @@ class Porker
   end
 
   def player_change_count_check
+    @player_change_count_flag = 1 if @change_count_player == FIRST_PLAYER_ROLE
     @player_change_count_flag = 2 if @change_count_player == PLAYER_ROLE
   end
 
   def opponent_change_count_check
+    @opponent_change_count_flag = 1 if @change_count_opponent == FIRST_OPPONENT_ROLE
     @opponent_change_count_flag = 2 if @change_count_opponent == OPPONENT_ROLE
   end
 
