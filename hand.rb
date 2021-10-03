@@ -1,4 +1,6 @@
-class Opponent < Player
+require './message'
+
+class Hand
   include Message
 
   attr_accessor :show_hands
@@ -6,8 +8,12 @@ class Opponent < Player
   # 手札5枚引くのを定数で定義
   NUMBER_OF_HAND = 5
 
+  def initialize
+    @hands = []
+  end
+
   # 手札を山札から引く
-  def first_draw_opponent(deck)
+  def first_draw_player(deck)
     NUMBER_OF_HAND.times do
       card = deck.draw
       @hands << card
@@ -19,14 +25,14 @@ class Opponent < Player
     end
   end
 
-  def hands_list_opponent
-    puts '=*=*=*=*= 対戦相手 手札 =*=*=*=*=*=*='
+  def hands_list_player
+    puts '=*=*=*=*= プレイヤー 手札 =*=*=*=*=*='
     @hands.each.with_index(1) do |hand, i|
       puts "#{i}. #{hand[0]}の#{hand[1]}"
     end
   end
 
-  def second_draw_opponent(deck)
+  def second_draw_player(deck)
     information2
     @change_number = gets.chomp.split(&:to_s)
     @change = Regexp.new(/^\d$|\d\s/)
@@ -43,15 +49,3 @@ class Opponent < Player
     end
   end
 end
-
-# private
-
-# def second_draw(deck)
-#   @opponentplayer.hands[0] = deck.draw if @trade.include?('1')
-#   @opponentplayer.hands[1] = deck.draw if @trade.include?('2')
-#   @opponentplayer.hands[2] = deck.draw if @trade.include?('3')
-#   @opponentplayer.hands[3] = deck.draw if @trade.include?('4')
-#   @opponentplayer.hands[4] = deck.draw if @trade.include?('5')
-#   @opponentplayer.show_hands = []
-#   @opponentplayer.show_hands << @player.hands
-# end
