@@ -7,6 +7,18 @@ module Message
     TEXT
   end
 
+  def display_hands
+    puts '=*=*=*=*= プレイヤー 手札 =*=*=*=*=*='
+  end
+
+  def display_hands_type
+    puts <<~TEXT
+      -------------------------------------
+      |      現在の役        |
+      -------------------------------------
+    TEXT
+  end
+
   def information1
     puts <<~TEXT
       ~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~/~
