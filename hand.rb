@@ -1,7 +1,7 @@
 require './message'
 
 class Hand
-  attr_accessor :show_hands
+  attr_accessor :hands_type
 
   include Message
 
@@ -22,7 +22,6 @@ class Hand
     @hands.each do |hand|
       @hands_type << hand
     end
-    @hands_type.flatten!
   end
 
   def hands_list
